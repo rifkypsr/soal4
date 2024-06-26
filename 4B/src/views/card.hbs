@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="card w-25 mx-4 my-4 shadow border-0">
+    {{#if this.provinsi_id}}
+        <img src="{{this.provinsi_photo}}" alt="Provinsi photo" class="card-img-top rounded-top" style="height: 250px; object-fit: cover;">
+        <div class="card-body">
+            <h3 class="card-title">{{this.provinsi_nama}}</h3>
+            <p class="card-text">Di Sahkan pada tahun: {{this.provinsi_diresmikan}}</p>
+            <p class="card-text">Pulau: {{this.pulau}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="/detail/{{this.provinsi_id}}" class="btn btn-outline-info">Detail</a>
+            <a href="/update_provinsi/{{this.provinsi_id}}" class="btn btn-outline-info">Edit</a>
+            <form action="/delete_provinsi/{{this.provinsi_id}}" method="POST" style="display:inline;"> <!-- Perubahan dimulai -->
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-outline-danger">Hapus</button>
+            </form> <!-- Perubahan berakhir -->
+        </div>
+    {{/if}}
+    {{#if this.kabupaten_id}}
+        <img src="{{this.kabupaten_photo}}" alt="Kabupaten photo" class="card-img-top rounded-top" style="height: 250px; object-fit: cover;">
+        <div class="card-body">
+            <h3 class="card-title">{{this.kabupaten_nama}}</h3>
+            <p class="card-text">Di Sahkan pada tahun: {{eq this.kabupaten_diesmikan pada:}}  {{this.kabupaten_diresmikan}}</p>
+            <p class="card-text">Provinsi: {{this.provinsi_nama}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="/detail-kab/{{this.kabupaten_id}}" class="btn btn-outline-danger" style="margin: 3px;">Detail</a>
+            <a href="/update_kabupaten/{{this.kabupaten_id}}" class="btn btn-outline-info">Edit</a> 
+            <form action="/delete_kabupaten/{{this.kabupaten_id}}" method="POST" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-outline-danger">Hapus</button>
+            </form> 
+        </div>
+    {{/if}}
+
+    
+</div>
+</body>
+</html>
+
